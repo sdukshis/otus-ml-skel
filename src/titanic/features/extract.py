@@ -17,7 +17,3 @@ def is_alone(df: pandas.DataFrame) -> pandas.Series:
         .apply(lambda row: row.SibSp == 0 and row.Parch == 0, axis=1)
         .astype(int)
     )
-
-
-def test_func():
-    pass
