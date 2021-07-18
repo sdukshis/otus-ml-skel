@@ -9,5 +9,6 @@ setup(name='titanic',
       author='Pavel Filonov',
       author_email='filonovpv@gail.com',
       url='https://github.com/sdukshis/otus-ml-skel',
-      packages=["titanic"],
+      package_dir={"": "src"},
+      packages=find_packages(where="src"),
      )
