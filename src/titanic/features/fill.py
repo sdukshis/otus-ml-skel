@@ -11,3 +11,11 @@ def embarked_imputer() -> SimpleImputer:
 
 def fill_embarked(df: pandas.DataFrame) -> pandas.Series:
     return embarked_imputer().fit_transform(df[["Embarked"]])
+
+
+def age_imputer() -> SimpleImputer:
+    return SimpleImputer(strategy="mean")
+
+
+def fill_age(df: pandas.DataFrame) -> pandas.Series:
+    return age_imputer().fit_transform(df[["Age"]])
