@@ -14,10 +14,7 @@ def make_baseline_model() -> Pipeline:
     onehot_features = ["Sex", "Pclass"]
 
     embarked_transformer = Pipeline(
-        steps=[
-            ("imputer", embarked_imputer()),
-            ("onehot", OneHotEncoder()),
-        ]
+        steps=[("imputer", embarked_imputer()), ("onehot", OneHotEncoder())]
     )
     onehot_transformer = OneHotEncoder(handle_unknown="ignore")
 
@@ -29,10 +26,7 @@ def make_baseline_model() -> Pipeline:
     )
 
     pipeline = Pipeline(
-        steps=[
-            ("preprocessor", preprocessor),
-            ("classifier", LogisticRegression()),
-        ]
+        steps=[("preprocessor", preprocessor), ("classifier", LogisticRegression())]
     )
 
     return pipeline
