@@ -23,4 +23,5 @@ def load_titanic() -> pandas.DataFrame:
         with open(TRAIN_PATH, "wb") as fd:
             fd.write(opener.read())
 
+    logging.info("Reading dataset from %s", TRAIN_PATH)
     return pandas.read_csv(TRAIN_PATH, index_col="PassengerId")

@@ -1,3 +1,5 @@
+from typing import NoReturn
+
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
