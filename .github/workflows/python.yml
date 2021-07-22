@@ -29,5 +29,5 @@ jobs:
           pytest --cov=src tests
       - name: Integration tests with pytest
         run: |
-          pytest service
+          pytest --cov=src --cov-append service
 
