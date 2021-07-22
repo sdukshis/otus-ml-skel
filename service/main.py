@@ -1,6 +1,5 @@
 """FastAPI Titanic model inference example"""
 
-import logging
 from typing import Optional
 import traceback
 import sys
@@ -9,6 +8,7 @@ import pandas as pd
 import numpy as np
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from sklearn.pipeline import Pipeline
 
 from titanic.models.serialize import load
 
@@ -16,7 +16,7 @@ app = FastAPI()
 
 
 class Model:
-    pipeline = None
+    pipeline: Optional[Pipeline] = None
 
 
 class Passanger(BaseModel):
@@ -46,6 +46,8 @@ def read_healthcheck():
 def predict(passenger_id: int, passanger: Passanger):
     df = pd.DataFrame([passanger.dict()])
     df.fillna(value=np.nan, inplace=True, downcast=False)
+    if Model.pipeline is None:
+        raise HTTPException(status_code=503, detail="No model loaded")
     try:
         pred = int(Model.pipeline.predict(df)[0])
     except Exception as e:

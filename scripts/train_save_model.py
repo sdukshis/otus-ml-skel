@@ -47,6 +47,7 @@ def train_store(dataset: pandas.DataFrame, model: Pipeline, filename: str) -> No
     X = dataset.drop("Survived", axis=1)
 
     logger.info("Training model on %d items", len(X))
+    print(model)
     model.fit(X, y)
     store(model, filename)
 

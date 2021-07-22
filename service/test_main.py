@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 
-from titanic.models.serialize import load
+from titanic.data.make_dataset import load_titanic
+from titanic.models.train import make_baseline_model
 
 from .main import app, Model
 
@@ -14,7 +15,13 @@ def test_healthcheck():
 
 
 def test_predict():
-    Model.pipeline = load("baseline.v1")
+    dataset = load_titanic()
+    y = dataset["Survived"]
+    X = dataset.drop("Survived", axis=1)
+    pipeline = make_baseline_model()
+    pipeline.fit(X, y)
+    Model.pipeline = pipeline
+
     passenger = {
         "Name": "John",
         "Pclass": 1,

@@ -33,7 +33,7 @@ def make_baseline_model() -> Pipeline:
 
     pipeline = Pipeline(
         steps=[
-            ("column_ordere", ColumnOrderer()),
+            ("column_orderer", ColumnOrderer()),
             ("preprocessor", preprocessor),
             ("classifier", LogisticRegression()),
         ]

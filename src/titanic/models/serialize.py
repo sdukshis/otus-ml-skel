@@ -8,6 +8,7 @@ __all__ = ["store", "load"]
 
 logger = logging.getLogger()
 
+
 def store(pipeline: Pipeline, filename: str, path: str = "default"):
     if path == "default":
         path = models_path()
@@ -15,6 +16,7 @@ def store(pipeline: Pipeline, filename: str, path: str = "default"):
 
     logger.info("Dumpung model into %s", filepath)
     joblib.dump(pipeline, filepath)
+
 
 def load(filename: str, path: str = "default") -> Pipeline:
     if path == "default":
@@ -29,4 +31,4 @@ def models_path() -> str:
     script_path = os.path.abspath(__file__)
     script_dir_path = os.path.dirname(script_path)
     models_folder = os.path.join(script_dir_path, "..", "..", "..", "models")
-    return models_folder    
+    return models_folder
