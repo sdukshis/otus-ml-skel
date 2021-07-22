@@ -9,7 +9,7 @@ def embarked_imputer() -> SimpleImputer:
     return SimpleImputer(strategy="most_frequent")
 
 
-def fill_embarked(df: pandas.DataFrame) -> pandas.Series:
+def fill_embarked(df : pandas.DataFrame) -> pandas.Series:
     return embarked_imputer().fit_transform(df[["Embarked"]])
 
 
