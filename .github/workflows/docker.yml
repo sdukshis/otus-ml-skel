@@ -21,7 +21,7 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
       - name: Train model
-        run: /scripts/train_save_model.py -m make_baseline -o baseline.v1 -v
+        run: scripts/train_save_model.py -m make_baseline -o baseline.v1 -v
       - name: Upload model artifact
         uses: actions/upload-artifact@v2
         with:
