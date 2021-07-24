@@ -4,6 +4,7 @@
 import argparse
 from typing import NoReturn
 import logging
+import sys
 
 import pandas
 from sklearn.pipeline import Pipeline
@@ -57,3 +58,4 @@ if __name__ == "__main__":
         main()
     except Exception as e:
         logging.critical(e)
+        sys.exit(1)

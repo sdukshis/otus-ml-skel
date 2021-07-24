@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 RUN pip install --no-cache-dir -e .
 
-COPY /models/baseline.v1.joblib models/
+COPY models/baseline.v1.joblib models/
 EXPOSE 8000
 
 ENV MODEL "baseline.v1"
