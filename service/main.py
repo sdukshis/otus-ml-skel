@@ -1,8 +1,7 @@
 """FastAPI Titanic model inference example"""
 
 from typing import Optional
-import traceback
-import sys
+import os
 
 import pandas as pd
 import numpy as np
@@ -14,6 +13,7 @@ from titanic.models.serialize import load
 
 app = FastAPI()
 
+MODEL = os.getenv("MODEL")
 
 class Model:
     pipeline: Optional[Pipeline] = None
@@ -34,7 +34,7 @@ class Passanger(BaseModel):
 
 @app.on_event("startup")
 def load_model():
-    Model.pipeline = load("baseline.v1")
+    Model.pipeline = load(MODEL)
 
 
 @app.get("/")
@@ -51,6 +51,5 @@ def predict(passenger_id: int, passanger: Passanger):
     try:
         pred = int(Model.pipeline.predict(df)[0])
     except Exception as e:
-        traceback.print_exception(*sys.exc_info())
         raise HTTPException(status_code=400, detail=str(e))
     return {"passenger_id": passenger_id, "survived": pred}

@@ -1,0 +1,7 @@
+/data
+/notebook
+/reports
+/tests
+*.md
+.git
+.gitignore
