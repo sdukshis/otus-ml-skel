@@ -6,12 +6,15 @@ import os
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI, HTTPException
+from starlette_exporter import PrometheusMiddleware, handle_metrics
 from pydantic import BaseModel
 from sklearn.pipeline import Pipeline
 
 from titanic.models.serialize import load
 
 app = FastAPI()
+app.add_middleware(PrometheusMiddleware)
+app.add_route("/metrics", handle_metrics)
 
 MODEL = os.getenv("MODEL")
 

@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8.11
 
 WORKDIR /usr/src/app
 
@@ -8,10 +8,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 RUN pip install --no-cache-dir -e .
 
-COPY models/baseline.v1.joblib models/
+RUN useradd --user-group --shell /bin/false titanic  
+USER titanic
+
 EXPOSE 8000
 
 ENV MODEL "baseline.v1"
 
-ENTRYPOINT ["uvicorn", "service.main:app", "--host", "0.0.0.0"]
+CMD ["bash", "start.sh"]
 
