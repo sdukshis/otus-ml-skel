@@ -1,4 +1,5 @@
 import os
+from typing import Optional
 from urllib.request import urlopen
 import logging
 
@@ -16,12 +17,14 @@ RAW_DATA_FOLDER = os.path.join(SCRIPT_DIR_PATH, "..", "..", "..", "data", "raw")
 TRAIN_PATH = os.path.join(RAW_DATA_FOLDER, "train.csv")
 
 
-def load_titanic() -> pandas.DataFrame:
-    if not os.path.exists(TRAIN_PATH):
+def load_titanic(datapath: Optional[str] = None) -> pandas.DataFrame:
+    if datapath is None:
+        datapath = TRAIN_PATH
+    if not os.path.exists(datapath):
         logger.info("Downloading dataset from %s", URL)
         opener = urlopen(URL)
-        with open(TRAIN_PATH, "wb") as fd:
+        with open(datapath, "wb") as fd:
             fd.write(opener.read())
 
-    logging.info("Reading dataset from %s", TRAIN_PATH)
-    return pandas.read_csv(TRAIN_PATH, index_col="PassengerId")
+    logging.info("Reading dataset from %s", datapath)
+    return pandas.read_csv(datapath, index_col="PassengerId")

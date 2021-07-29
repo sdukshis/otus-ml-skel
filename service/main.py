@@ -42,7 +42,7 @@ def load_model():
 
 @app.get("/")
 def read_healthcheck():
-    return {"status": "Green"}
+    return {"status": "Green", "version": "0.1.2"}
 
 
 @app.post("/predict")

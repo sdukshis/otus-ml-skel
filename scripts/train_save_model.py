@@ -26,6 +26,13 @@ def main():
         help="model name (must be importable from titanic.models.train module)",
     )
     argparser.add_argument(
+        "-d",
+        "--datapath",
+        required=False,
+        default=None,
+        help="dataset store path",
+    )
+    argparser.add_argument(
         "-o", "--output", required=True, help="filename to store model"
     )
     argparser.add_argument(
@@ -39,7 +46,7 @@ def main():
     model_train_func = getattr(train, args.model)
     model = model_train_func()
     logging.info("Model '%s' created", args.model)
-    dataset = load_titanic()
+    dataset = load_titanic(args.datapath)
     train_store(dataset, model, args.output)
 
 
@@ -48,7 +55,6 @@ def train_store(dataset: pandas.DataFrame, model: Pipeline, filename: str) -> No
     X = dataset.drop("Survived", axis=1)
 
     logger.info("Training model on %d items", len(X))
-    print(model)
     model.fit(X, y)
     store(model, filename)
 

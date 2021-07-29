@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: titanic-deployment
+  labels:
+    app: titanic
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: titanic
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+      labels:
+        app: titanic
+    spec:
+      containers:
+        - name: titanic
+          image: sdukshis/titanic:0.1.1
+          ports:
+            - containerPort: 8000
