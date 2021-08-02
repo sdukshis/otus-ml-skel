@@ -12,3 +12,5 @@ fastapi==0.66.1
 uvicorn[standard]==0.14.0
 requests==2.26.0
 starlette-exporter==0.10.0
+mlflow==1.19.0
+boto3==1.18.10

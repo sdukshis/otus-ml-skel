@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: titanic-train
+spec:
+  template:
+    spec:
+      containers:
+      - name: titanic-train
+        image: sdukshis/titanic_train:0.1.0
+        command: ["./scripts/train_save_model.py", "-m", "make_baseline_model", "-o", "baseline.v1", "-v"]
+      restartPolicy: Never
