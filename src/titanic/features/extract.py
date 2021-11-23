@@ -14,7 +14,7 @@ def family_size(df: pandas.DataFrame) -> pandas.Series:
 def is_alone(df: pandas.DataFrame) -> pandas.Series:
     return (
         df[["SibSp", "Parch"]]
-        .apply(lambda row: row.SibSp == 0 and row.Parch == 0, axis=1)
+        .apply(lambda row: row.SibSp == 0, axis=1)
         .astype(int)
     )
 
