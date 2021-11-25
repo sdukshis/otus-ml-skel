@@ -20,12 +20,14 @@ jobs:
           pip install -e .
       - name: Check PEP8 compliance
         run: |
-          black --check --verbose src
+          black --check --verbose src service
       - name: Lint with mypy
         run: |
           mypy src
       - name: Unit tests with pytest
         run: |
           pytest --cov=src tests
-
+      - name: Integration tests with pytest
+        run: |
+          pytest --cov=service service
     

@@ -16,7 +16,8 @@ app = FastAPI()
 app.add_middleware(PrometheusMiddleware)
 app.add_route("/metrics", handle_metrics)
 
-MODEL = os.getenv("MODEL")
+MODEL = os.getenv("MODEL", default="baseline.v1")
+
 
 class Model:
     pipeline: Optional[Pipeline] = None

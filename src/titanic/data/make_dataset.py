@@ -20,6 +20,7 @@ TRAIN_PATH = os.path.join(RAW_DATA_FOLDER, "train.csv")
 def load_titanic(datapath: Optional[str] = None) -> pandas.DataFrame:
     if datapath is None:
         datapath = TRAIN_PATH
+
     if not os.path.exists(datapath):
         logger.info("Downloading dataset from %s", URL)
         opener = urlopen(URL)
