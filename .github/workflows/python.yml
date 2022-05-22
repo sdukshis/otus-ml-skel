@@ -24,6 +24,9 @@ jobs:
       - name: Lint with mypy
         run: |
           mypy src
+      - name: Run isort
+        run: |
+          isort src         
       - name: Unit tests with pytest
         run: |
           pytest --cov=src tests

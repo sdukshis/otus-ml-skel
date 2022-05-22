@@ -14,3 +14,4 @@ requests==2.26.0
 starlette-exporter==0.10.0
 mlflow==1.19.0
 boto3==1.18.10
+isort==5.10.1
