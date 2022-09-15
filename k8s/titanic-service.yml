@@ -2,10 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: titanic-service
+  labels:
+    app: titanic
 spec:
   selector:
     app: titanic
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8000
+    - name: titanic
+      protocol: TCP
+      port: 8000
