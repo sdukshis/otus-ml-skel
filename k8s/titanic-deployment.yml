@@ -5,20 +5,17 @@ metadata:
   labels:
     app: titanic
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: titanic
   template:
     metadata:
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "8000"
       labels:
         app: titanic
     spec:
       containers:
         - name: titanic
-          image: sdukshis/titanic:0.1.1
+          image: sdukshis/titanic:0.2.0
           ports:
             - containerPort: 8000

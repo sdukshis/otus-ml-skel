@@ -1,13 +1,22 @@
 apiVersion: monitoring.coreos.com/v1
-kind: Prometheus
+kind: ServiceMonitor
 metadata:
-  name: prometheus
+  namespace: monitoring
+  labels:
+    release: prometheus
+  name: titanic
 spec:
-  serviceAccountName: prometheus
-  podMonitorSelector:
+  endpoints:
+
+  - path: /metrics
+    port: titanic
+    scheme: http
+    interval: 60s
+
+  jobLabel: titanic
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
     matchLabels:
       app: titanic
-  resources:
-    requests:
-      memory: 400Mi
-  enableAdminAPI: false
