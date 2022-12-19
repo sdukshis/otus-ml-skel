@@ -70,7 +70,6 @@ def predict(passenger_id: int, passanger: Passenger):
     return {"passenger_id": passenger_id, "survived": pred}
 
 
-
 @app.post("/predict_batch")
 def predict_batch(passengers: PassengerList):
     pass
