@@ -1,6 +1,6 @@
 """FastAPI Titanic model inference example"""
 
-from typing import Optional
+from typing import Optional, List
 import os
 
 import pandas as pd
@@ -23,7 +23,7 @@ class Model:
     pipeline: Optional[Pipeline] = None
 
 
-class Passanger(BaseModel):
+class Passenger(BaseModel):
     Pclass: int
     Name: str
     Sex: str
@@ -34,6 +34,10 @@ class Passanger(BaseModel):
     Fare: float
     Cabin: Optional[str] = None
     Embarked: Optional[str] = None
+
+
+class PassengerList(BaseModel):
+    passengers: List[Passenger]
 
 
 @app.on_event("startup")
@@ -47,8 +51,8 @@ def read_healthcheck():
 
 
 @app.post("/predict")
-def predict(passenger_id: int, passanger: Passanger):
-    df = pd.DataFrame([passanger.dict()])
+def predict(passenger_id: int, passenger: Passenger):
+    df = pd.DataFrame([passenger.dict()])
     df.fillna(value=np.nan, inplace=True, downcast=False)
     if Model.pipeline is None:
         raise HTTPException(status_code=503, detail="No model loaded")
@@ -57,3 +61,9 @@ def predict(passenger_id: int, passanger: Passanger):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
     return {"passenger_id": passenger_id, "survived": pred}
+
+
+
+@app.post("/predict_batch")
+def predict_batch(passengers: PassengerList):
+    pass
