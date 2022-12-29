@@ -9,3 +9,5 @@ ML repo skeleton
 
 Смотри [CONTRIBUTING.md](CONTRIBUTING.md)
 
+## Students
+Bondaleksey
