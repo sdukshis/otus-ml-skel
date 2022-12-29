@@ -8,4 +8,5 @@ ML repo skeleton
 ## Contributing
 
 Смотри [CONTRIBUTING.md](CONTRIBUTING.md)
+test
 
