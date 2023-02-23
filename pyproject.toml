@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "titanic"
+version = "1.0.1"
+authors = [
+    {name = "Pavel Filonov", email = "filonovpv@gail.com"},
+]
+description = "OTUS ML repo skeleton"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["one", "two"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+homepage = "https://github.com/sdukshis/otus-ml-skel"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
