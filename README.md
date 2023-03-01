@@ -10,3 +10,6 @@ ML repo skeleton
 Смотри [CONTRIBUTING.md](CONTRIBUTING.md)
 test
 
+## add partition
+
+Написать дополнительный раздел.
