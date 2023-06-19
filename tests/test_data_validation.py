@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 import pandas as pd
 
-from titanic.data.validation import *
+from src.titanic.data.validation import *
 
 
 @pytest.mark.parametrize("input_size", [100, 101])

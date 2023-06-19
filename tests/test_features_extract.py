@@ -2,7 +2,7 @@ import pytest
 
 import pandas as pd
 
-from titanic.features.extract import *
+from src.titanic.features.extract import *
 
 
 @pytest.mark.parametrize("test_input,expected", [((0, 0), 1), ((0, 1), 2), ((1, 2), 4)])
