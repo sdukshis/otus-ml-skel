@@ -1,3 +1,4 @@
+"""Module providing load_titanic function"""
 import os
 from typing import Optional
 from urllib.request import urlopen
@@ -18,14 +19,16 @@ TRAIN_PATH = os.path.join(RAW_DATA_FOLDER, "train.csv")
 
 
 def load_titanic(datapath: Optional[str] = None) -> pandas.DataFrame:
+    """Function loading titanic data"""
     if datapath is None:
         datapath = TRAIN_PATH
 
     if not os.path.exists(datapath):
         logger.info("Downloading dataset from %s", URL)
-        opener = urlopen(URL)
-        with open(datapath, "wb") as fd:
-            fd.write(opener.read())
+        with urlopen(URL) as conn:
+            with open(datapath, "wb") as fd1:
+                readen = conn.read()
+                fd1.write(readen)
 
     logging.info("Reading dataset from %s", datapath)
     return pandas.read_csv(datapath, index_col="PassengerId")
