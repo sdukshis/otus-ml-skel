@@ -1,4 +1,6 @@
 """Module providing train_test_split function"""
+import sys
+sys.path.append("..") # Adds higher directory to python modules path.
 from typing import Tuple
 
 import pandas

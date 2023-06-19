@@ -10,9 +10,7 @@ logger = logging.getLogger(__name__)
 
 __all__ = ["load_titanic"]
 
-URL = "https://gist.github.com/sdukshis\
-/c4fa70ed0bd9468f6401ab8dc1e36f8d/raw\
-/e62762bbb28d67b72ad1c4819b65b2fc67ae4b12/train.csv"
+URL = "https://gist.github.com/sdukshis/c4fa70ed0bd9468f6401ab8dc1e36f8d/raw/e62762bbb28d67b72ad1c4819b65b2fc67ae4b12/train.csv"
 
 SCRIPT_PATH = os.path.abspath(__file__)
 SCRIPT_DIR_PATH = os.path.dirname(SCRIPT_PATH)
