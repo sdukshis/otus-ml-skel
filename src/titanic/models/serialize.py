@@ -1,3 +1,6 @@
+"""
+Tools for saving and loading models
+"""
 import os
 import logging
 
@@ -10,6 +13,7 @@ logger = logging.getLogger()
 
 
 def store(pipeline: Pipeline, filename: str, path: str = "default"):
+    """Dumps pipeline"""
     if path == "default":
         path = models_path()
     filepath = os.path.join(path, filename + ".joblib")
@@ -19,6 +23,7 @@ def store(pipeline: Pipeline, filename: str, path: str = "default"):
 
 
 def load(filename: str, path: str = "default") -> Pipeline:
+    """Loads model"""
     if path == "default":
         path = models_path()
     filepath = os.path.join(path, filename + ".joblib")
@@ -28,6 +33,7 @@ def load(filename: str, path: str = "default") -> Pipeline:
 
 
 def models_path() -> str:
+    """Generarates model folder"""
     script_path = os.path.abspath(__file__)
     script_dir_path = os.path.dirname(script_path)
     models_folder = os.path.join(script_dir_path, "..", "..", "..", "models")
