@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  namespace: monitoring
+  namespace: default
   labels:
     release: prometheus
   name: titanic
@@ -11,7 +11,7 @@ spec:
   - path: /metrics
     port: titanic
     scheme: http
-    interval: 60s
+    interval: 30s
 
   jobLabel: titanic
   namespaceSelector:
