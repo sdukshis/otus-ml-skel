@@ -1,9 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  namespace: monitoring
+  namespace: default
   labels:
-    release: prometheus
+    release: monitoring
   name: titanic
 spec:
   endpoints:
