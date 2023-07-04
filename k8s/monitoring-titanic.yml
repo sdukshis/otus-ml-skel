@@ -11,7 +11,7 @@ spec:
   - path: /metrics
     port: titanic
     scheme: http
-    interval: 60s
+    interval: 30s
 
   jobLabel: titanic
   namespaceSelector:
