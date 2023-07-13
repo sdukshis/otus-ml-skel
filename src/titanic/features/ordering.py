@@ -1,8 +1,9 @@
+"""Implements column ordering"""
 from __future__ import annotations
 
 import pandas
 
-__all__ = ["FeatureOrderer"]
+__all__ = ["ColumnOrderer"]
 
 
 class ColumnOrderer:
@@ -11,12 +12,14 @@ class ColumnOrderer:
     def __init__(self):
         self._features = []
 
-    def fit(self, X: pandas.DataFrame, y) -> ColumnOrderer:
-        self._features = X.columns
+    def fit(self, features: pandas.DataFrame, targets) -> ColumnOrderer:
+        """Fits model"""
+        self._features = features.columns
         return self
 
-    def transform(self, X: pandas.DataFrame) -> pandas.DataFrame:
-        return X[self._features]
+    def transform(self, features: pandas.DataFrame) -> pandas.DataFrame:
+        """Returns features"""
+        return features[self._features]
 
     def __repr__(self) -> str:
         return "ColumnOrderer()"

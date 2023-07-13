@@ -1,19 +1,22 @@
+"""Feature extractor"""
 import pandas
 
 __all__ = ["family_size", "is_alone"]
 
 
-def family_size(df: pandas.DataFrame) -> pandas.Series:
+def family_size(input_data: pandas.DataFrame) -> pandas.Series:
+    """Generates family size feature"""
     return (
-        df[["SibSp", "Parch"]]
+        input_data[["SibSp", "Parch"]]
         .apply(lambda row: row.SibSp + row.Parch + 1, axis=1)
         .astype(int)
     )
 
 
-def is_alone(df: pandas.DataFrame) -> pandas.Series:
+def is_alone(input_data: pandas.DataFrame) -> pandas.Series:
+    """Checks if man was alone"""
     return (
-        df[["SibSp", "Parch"]]
+        input_data[["SibSp", "Parch"]]
         .apply(lambda row: row.SibSp == 0 and row.Parch == 0, axis=1)
         .astype(int)
     )

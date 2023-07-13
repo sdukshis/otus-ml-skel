@@ -1,3 +1,6 @@
+"""
+Module to download titanic dataset
+"""
 import os
 from typing import Optional
 from urllib.request import urlopen
@@ -9,7 +12,10 @@ logger = logging.getLogger(__name__)
 
 __all__ = ["load_titanic"]
 
-URL = "https://gist.github.com/sdukshis/c4fa70ed0bd9468f6401ab8dc1e36f8d/raw/e62762bbb28d67b72ad1c4819b65b2fc67ae4b12/train.csv"
+URL = (
+    "https://gist.github.com/sdukshis/c4fa70ed0bd9468f6401ab8dc1e36f8d/"
+    "raw/e62762bbb28d67b72ad1c4819b65b2fc67ae4b12/train.csv"
+)
 
 SCRIPT_PATH = os.path.abspath(__file__)
 SCRIPT_DIR_PATH = os.path.dirname(SCRIPT_PATH)
@@ -23,9 +29,8 @@ def load_titanic(datapath: Optional[str] = None) -> pandas.DataFrame:
 
     if not os.path.exists(datapath):
         logger.info("Downloading dataset from %s", URL)
-        opener = urlopen(URL)
-        with open(datapath, "wb") as fd:
-            fd.write(opener.read())
+        with open(datapath, "wb") as data_file, urlopen(URL) as opener:
+            data_file.write(opener.read())
 
     logging.info("Reading dataset from %s", datapath)
     return pandas.read_csv(datapath, index_col="PassengerId")
