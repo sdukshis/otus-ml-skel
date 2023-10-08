@@ -8,6 +8,6 @@ ML repo skeleton
 ## Contributing
 
 Смотри [CONTRIBUTING.md](CONTRIBUTING.md)
-test
+test ci/cd
 
 
