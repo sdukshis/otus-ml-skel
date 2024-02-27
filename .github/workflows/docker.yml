@@ -60,7 +60,7 @@ jobs:
           context: ./
           file: ./docker/titanic/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/titanic:0.1.0
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/titanic:0.1.0-var
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
