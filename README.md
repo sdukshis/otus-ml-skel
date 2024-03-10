@@ -8,3 +8,5 @@ ML repo skeleton
 ## Contributing
 
 Смотри [CONTRIBUTING.md](CONTRIBUTING.md)
+
+Created new issues
